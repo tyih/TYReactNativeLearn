@@ -19,6 +19,7 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   FlatList,
+  SectionList,
 } from 'react-native';
 
 /** props */
@@ -339,33 +340,74 @@ import {
 // }
 
 /** 长列表 */
-export default class FlatListBasics extends Component {
+/// FlatList 长列表数据，可增删
+// export default class FlatListBasics extends Component {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <FlatList
+//           data={[
+//             { key: 'Devin' },
+//             { key: 'Jackon' },
+//             { key: 'James' },
+//             { key: 'Joles' },
+//             { key: 'Jillian' },
+//             { key: 'Julie' },
+//             { key: 'Hepp' },
+//             { key: 'Tiie' },
+//             { key: 'Poop' }
+//           ]}
+//           renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+//         />
+//       </View>
+//     )
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 22
+//   },
+//   item: {
+//     padding: 10,
+//     fontSize: 18,
+//     height: 44
+//   }
+// })
+
+/// SectionList 分组列表
+
+export default class SectionListBasics extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <FlatList
-      data={[
-        {key: 'Devin'},
-        {key: 'Jackon'},
-        {key: 'James'},
-        {key: 'Joles'},
-        {key: 'Jillian'},
-        {key: 'Julie'},
-        {key: 'Hepp'},
-        {key: 'Tiie'},
-        {key: 'Poop'}
-      ]}
-      renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-      />
+        <SectionList
+        sections={[
+          {title: 'D', data: [{key: 'Devin'}]},
+          {title: 'J', data: [{key: 'Jacken'}, {key: 'James'}, {key: 'Jack'}]}
+        ]}
+        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+        />
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
     paddingTop: 22
+  },
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: '#444fff'
   },
   item: {
     padding: 10,
