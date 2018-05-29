@@ -18,6 +18,7 @@ import {
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
   ScrollView,
+  FlatList,
 } from 'react-native';
 
 /** props */
@@ -312,27 +313,63 @@ import {
 // })
 
 /** 使用ScrollView */
-export default class ScrollViewOfImages extends Component {
+// export default class ScrollViewOfImages extends Component {
+//   render() {
+//     return (
+//       <ScrollView>
+//         <Text style={{ fontSize: 97 }}>Scroll Me Plz</Text>
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Text style={{ fontSize: 97 }}>Scrolling down</Text>
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Text style={{ fontSize: 97 }}>What the best</Text>
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Image source={require('./img/favicon.png')} />
+//         <Text style={{ fontSize: 97 }}>React Native</Text>
+//       </ScrollView>
+//     )
+//   }
+// }
+
+/** 长列表 */
+export default class FlatListBasics extends Component {
   render() {
     return (
-      <ScrollView>
-        <Text style={{ fontSize: 97 }}>Scroll Me Plz</Text>
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Text style={{ fontSize: 97 }}>Scrolling down</Text>
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Text style={{ fontSize: 97 }}>What the best</Text>
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Image source={require('./img/favicon.png')} />
-        <Text style={{ fontSize: 97 }}>React Native</Text>
-      </ScrollView>
+      <View style={styles.container}>
+      <FlatList
+      data={[
+        {key: 'Devin'},
+        {key: 'Jackon'},
+        {key: 'James'},
+        {key: 'Joles'},
+        {key: 'Jillian'},
+        {key: 'Julie'},
+        {key: 'Hepp'},
+        {key: 'Tiie'},
+        {key: 'Poop'}
+      ]}
+      renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+      />
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44
+  }
+})
